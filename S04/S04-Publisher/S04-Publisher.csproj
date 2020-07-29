@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\S04-Subscriber\S04-Subscriber.csproj" />
+    <ProjectReference Include="..\S04-Contracts\S04-Contracts.csproj" />
   </ItemGroup>
 
 </Project>

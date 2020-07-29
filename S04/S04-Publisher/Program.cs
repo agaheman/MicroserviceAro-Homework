@@ -13,8 +13,8 @@ namespace S04_Publisher
             {
                 cfg.Host("rabbitmq://localhost", hostConfigurator =>
                 {
-                    hostConfigurator.Username("guest");
-                    hostConfigurator.Password("guest");
+                    hostConfigurator.Username("admin");
+                    hostConfigurator.Password("admin");
                 });
 
                 cfg.OverrideDefaultBusEndpointQueueName("OrderRegistration-PublisherExchange");
@@ -29,9 +29,9 @@ namespace S04_Publisher
             };
 
             var requestClient = bus.CreateRequestClient<OrderRegistered>(RequestTimeout.After(s: 5));
-            (Task<Response<OrderAccepted>>, Task<Response<OrderRejected>>) response = requestClient.GetResponse<OrderAccepted, OrderRejected>(orderRegisteredMessage).Result;
+            var response = requestClient.GetResponse<OrderAccepted, OrderRejected>(orderRegisteredMessage).Result;
 
-
+            //DO Some thing with response.
             Console.ReadKey();
 
             bus.Stop();

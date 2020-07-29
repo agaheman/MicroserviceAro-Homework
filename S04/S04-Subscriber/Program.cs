@@ -6,14 +6,14 @@ namespace S04_Subscriber
 {
     class Program
     {
-        static async void Main()
+        static async Task Main()
         {
             var busControl = Bus.Factory.CreateUsingRabbitMq(cfg =>
             {
                 cfg.Host("rabbitmq://localhost", hostConfigurator =>
                 {
-                    hostConfigurator.Username("guest");
-                    hostConfigurator.Password("guest");
+                    hostConfigurator.Username("admin");
+                    hostConfigurator.Password("admin");
                 });
 
                 cfg.ReceiveEndpoint("OrderRegistration-Subscriber", e =>
